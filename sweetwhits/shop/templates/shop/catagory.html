@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div>
+		Catagory Page! for {{ title }}
+		{% for product in products %}
+			{{ product.title }}
+		{% endfor %}
+	</div>
+{% endblock %}
