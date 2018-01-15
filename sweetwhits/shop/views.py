@@ -10,12 +10,17 @@ def index(request):
 def show_product_catagory_action(request, catagory):
 	catagory = Catagory.objects.get(slug=catagory)
 	products = Product.objects.filter(catagory_id=catagory.id)
-
 	return render(request, 'shop/catagory.html', {
 		'title' : catagory.title,
 		'slug' : catagory.slug,
-		'products' : products
-	})
+		'products' : products})
 
 def show_product_action(request, product_slug):
-	return render(request, 'shop/single.html')	
+	product = Product.objects.get(slug=product_slug)
+	return render(request, 'shop/single.html', {
+		'product' : product})	
+
+def show_all_products_action(request, product_slug):
+	products = Product.objects.all()
+	return render(request, 'shop/catagory.html', {
+		'products' : products})		
